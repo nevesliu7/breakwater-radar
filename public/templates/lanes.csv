@@ -1,0 +1,4 @@
+id,name,origin_country,origin_state,destination_country,destination_state,mode,lead_time_days,fulfillment_sla_days,criticality,notes
+lane-001,Shenzhen to Los Angeles ocean,China,Guangdong,United States,California,ocean,18,5,core,High-volume replenishment lane
+lane-002,Los Angeles to Texas parcel,United States,California,United States,Texas,parcel,4,3,important,Regional handoff lane
+

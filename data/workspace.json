@@ -1,0 +1,631 @@
+{
+  "metadata": {
+    "workspaceName": "Pilot Workspace: U.S. Cross-Border Operator",
+    "mode": "server workspace",
+    "createdAt": "2026-07-28T16:00:00Z",
+    "updatedAt": "2026-07-29T20:58:23.174Z",
+    "notes": "Demo workspace seeded for the GitHub MVP. Replace each asset group with your own CSV imports."
+  },
+  "assets": {
+    "facilities": [
+      {
+        "id": "fac-shenzhen",
+        "name": "Shenzhen Consolidation Hub",
+        "type": "origin hub",
+        "country": "China",
+        "state": "Guangdong",
+        "city": "Shenzhen",
+        "timezone": "Asia/Shanghai",
+        "criticality": "core",
+        "notes": "Primary export consolidation point for U.S.-bound inventory."
+      },
+      {
+        "id": "fac-la",
+        "name": "Los Angeles 3PL",
+        "type": "3PL",
+        "country": "United States",
+        "state": "California",
+        "city": "Los Angeles",
+        "timezone": "America/Los_Angeles",
+        "criticality": "core",
+        "notes": "Main West Coast receiving and outbound warehouse."
+      },
+      {
+        "id": "fac-atlanta",
+        "name": "Atlanta Returns Hub",
+        "type": "returns center",
+        "country": "United States",
+        "state": "Georgia",
+        "city": "Atlanta",
+        "timezone": "America/New_York",
+        "criticality": "important",
+        "notes": "Used for returns and East Coast overflow."
+      },
+      {
+        "id": "fac-toronto",
+        "name": "Toronto Supplier Dock",
+        "type": "supplier dock",
+        "country": "Canada",
+        "state": "Ontario",
+        "city": "Toronto",
+        "timezone": "America/Toronto",
+        "criticality": "important",
+        "notes": "Canada-origin replenishment point for U.S.-bound home goods."
+      }
+    ],
+    "lanes": [
+      {
+        "id": "lane-sz-la-ocean",
+        "name": "Shenzhen to Los Angeles ocean",
+        "originCountry": "China",
+        "originState": "Guangdong",
+        "destinationCountry": "United States",
+        "destinationState": "California",
+        "mode": "ocean",
+        "leadTimeDays": 18,
+        "fulfillmentSlaDays": 5,
+        "criticality": "core",
+        "notes": "High-volume replenishment lane."
+      },
+      {
+        "id": "lane-la-tx-parcel",
+        "name": "Los Angeles to Texas parcel handoff",
+        "originCountry": "United States",
+        "originState": "California",
+        "destinationCountry": "United States",
+        "destinationState": "Texas",
+        "mode": "parcel",
+        "leadTimeDays": 4,
+        "fulfillmentSlaDays": 3,
+        "criticality": "important",
+        "notes": "Sensitive to linehaul congestion."
+      },
+      {
+        "id": "lane-sz-nj-air",
+        "name": "Shenzhen to New Jersey air express",
+        "originCountry": "China",
+        "originState": "Guangdong",
+        "destinationCountry": "United States",
+        "destinationState": "New Jersey",
+        "mode": "air",
+        "leadTimeDays": 6,
+        "fulfillmentSlaDays": 2,
+        "criticality": "important",
+        "notes": "Used for urgent restocks and launch inventory."
+      },
+      {
+        "id": "lane-toronto-la-ground",
+        "name": "Toronto to Los Angeles ground",
+        "originCountry": "Canada",
+        "originState": "Ontario",
+        "destinationCountry": "United States",
+        "destinationState": "California",
+        "mode": "ground",
+        "leadTimeDays": 7,
+        "fulfillmentSlaDays": 4,
+        "criticality": "important",
+        "notes": "Used for Canada-origin replenishment into U.S. storefronts."
+      }
+    ],
+    "skus": [
+      {
+        "id": "sku-portable-fan",
+        "name": "Portable Fan Kit",
+        "originCountry": "China",
+        "primaryMarket": "United States",
+        "channels": [
+          "Amazon US",
+          "Shopify US"
+        ],
+        "marginBand": "thin",
+        "criticality": "core",
+        "htsCode": "8414.59",
+        "category": "small appliance",
+        "userSegments": [
+          "heat-sensitive buyers",
+          "Amazon deal shoppers"
+        ],
+        "alternateOrigins": [
+          "Vietnam",
+          "Mexico"
+        ],
+        "notes": "High summer volume and tariff sensitivity."
+      },
+      {
+        "id": "sku-lighting-kit",
+        "name": "Modular Lighting Kit",
+        "originCountry": "China",
+        "primaryMarket": "United States",
+        "channels": [
+          "Shopify US"
+        ],
+        "marginBand": "medium",
+        "criticality": "important",
+        "htsCode": "9405.49",
+        "category": "lighting",
+        "userSegments": [
+          "home improvement buyers",
+          "bundle shoppers"
+        ],
+        "alternateOrigins": [
+          "Vietnam",
+          "Mexico"
+        ],
+        "notes": "Popular for bundles, lead-time sensitive."
+      },
+      {
+        "id": "sku-storage-bin",
+        "name": "Stackable Storage Bin",
+        "originCountry": "Vietnam",
+        "primaryMarket": "United States",
+        "channels": [
+          "Amazon US"
+        ],
+        "marginBand": "healthy",
+        "criticality": "monitor",
+        "htsCode": "3924.90",
+        "category": "home storage",
+        "userSegments": [
+          "home organization buyers"
+        ],
+        "alternateOrigins": [
+          "Mexico",
+          "United States"
+        ],
+        "notes": "Lower exposure to China trade shifts."
+      },
+      {
+        "id": "sku-maple-rack",
+        "name": "Maple Home Storage Rack",
+        "originCountry": "Canada",
+        "primaryMarket": "United States",
+        "channels": [
+          "Shopify US",
+          "Amazon US"
+        ],
+        "marginBand": "thin",
+        "criticality": "important",
+        "htsCode": "9403.20",
+        "category": "furniture/home storage",
+        "userSegments": [
+          "small apartment renters",
+          "home organization buyers"
+        ],
+        "alternateOrigins": [
+          "Mexico",
+          "United States",
+          "Vietnam"
+        ],
+        "notes": "Canada-origin SKU for U.S.-Canada tariff exposure testing."
+      }
+    ],
+    "storefronts": [
+      {
+        "id": "store-amazon-us",
+        "name": "Amazon US",
+        "platform": "Amazon",
+        "market": "United States",
+        "country": "United States",
+        "state": "Washington",
+        "city": "Seattle",
+        "criticality": "core",
+        "notes": "Largest order volume channel."
+      },
+      {
+        "id": "store-shopify-us",
+        "name": "Shopify US",
+        "platform": "Shopify",
+        "market": "United States",
+        "country": "United States",
+        "state": "New York",
+        "city": "New York",
+        "criticality": "important",
+        "notes": "Higher margin direct-to-consumer channel."
+      }
+    ],
+    "workforceLocations": [
+      {
+        "id": "team-ops-east",
+        "teamName": "Ops East",
+        "country": "United States",
+        "state": "New Jersey",
+        "city": "Jersey City",
+        "employees": 5,
+        "criticality": "important",
+        "notes": "Coordinates East Coast restocks and marketplace issues."
+      },
+      {
+        "id": "team-care-tx",
+        "teamName": "Customer Care Texas",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Austin",
+        "employees": 6,
+        "criticality": "monitor",
+        "notes": "Handles delivery promises and refund escalations."
+      }
+    ]
+  },
+  "documents": [
+    {
+      "id": "doc-demo-playbook",
+      "name": "West Coast Weather Playbook.pdf",
+      "kind": "playbook",
+      "summary": "Internal response steps for port congestion, linehaul delays, and revised delivery promises.",
+      "tags": [
+        "weather",
+        "warehouse",
+        "customer promise"
+      ],
+      "uploadedAt": "2026-07-28T15:15:00Z",
+      "sizeBytes": 418200,
+      "path": "demo/West-Coast-Weather-Playbook.pdf"
+    }
+  ],
+  "alerts": [
+    {
+      "id": "alert-gd-typhoon",
+      "board": "natural-disasters",
+      "riskType": "storm",
+      "title": "Typhoon track raises disruption risk for Guangdong export hubs",
+      "summary": "Port handoff and export staging in Guangdong are likely to tighten within the next 36 hours.",
+      "severity": 5,
+      "confidence": 5,
+      "hoursToImpact": 36,
+      "detectedAt": "2026-07-28T10:00:00Z",
+      "locations": {
+        "countries": [
+          "China"
+        ],
+        "states": [
+          "Guangdong"
+        ],
+        "cities": [
+          "Shenzhen"
+        ]
+      },
+      "sourceLinks": [
+        {
+          "label": "Xinhua weather alert example",
+          "url": "https://www.xinhuanet.com/english/20260725/29fe3b00dc2f4b9a88ff9ab12ac1012b/c.html",
+          "publishedAt": "2026-07-25"
+        }
+      ],
+      "signals": [
+        "port delay risk",
+        "pickup rescheduling",
+        "origin backlog"
+      ],
+      "actions": [
+        {
+          "title": "Stage high-priority export cartons before the evening cutoff",
+          "owner": "Origin operations",
+          "status": "new",
+          "rationale": "Shorten the exposure window at the consolidation hub."
+        },
+        {
+          "title": "Pre-warn U.S. customer care about replenishment slippage",
+          "owner": "Customer care",
+          "status": "new",
+          "rationale": "Reduce surprise tickets if inbound replenishment slips."
+        }
+      ],
+      "watchNext": "Track port gate status and truck pickup confirmation every six hours."
+    },
+    {
+      "id": "alert-ca-heat",
+      "board": "natural-disasters",
+      "riskType": "heatwave",
+      "title": "Southern California heat and smoke pressure warehouse throughput",
+      "summary": "Outbound speed from the Los Angeles 3PL may dip as heat restrictions and air quality worsen.",
+      "severity": 4,
+      "confidence": 4,
+      "hoursToImpact": 18,
+      "detectedAt": "2026-07-28T09:30:00Z",
+      "locations": {
+        "countries": [
+          "United States"
+        ],
+        "states": [
+          "California"
+        ],
+        "cities": [
+          "Los Angeles"
+        ]
+      },
+      "sourceLinks": [
+        {
+          "label": "SBA readiness reference",
+          "url": "https://www.sba.gov/business-guide/manage-your-business/prepare-emergencies",
+          "publishedAt": "2026-07-28"
+        }
+      ],
+      "signals": [
+        "warehouse slowdown",
+        "carrier staffing pressure",
+        "outbound cutoff risk"
+      ],
+      "actions": [
+        {
+          "title": "Shift late-day parcel volume to earlier pick waves",
+          "owner": "Warehouse lead",
+          "status": "new",
+          "rationale": "Protect the last outbound scan window."
+        },
+        {
+          "title": "Review customer delivery promises for West Coast orders",
+          "owner": "Marketplace manager",
+          "status": "new",
+          "rationale": "Limit avoidable promise misses."
+        }
+      ],
+      "watchNext": "Check labor availability and linehaul dispatch windows by 2 p.m. local time."
+    },
+    {
+      "id": "alert-tx-flood",
+      "board": "natural-disasters",
+      "riskType": "flood",
+      "title": "Flash flood watch threatens Texas parcel handoff windows",
+      "summary": "Regional linehaul and final-mile handoffs into Texas could extend by one service day.",
+      "severity": 3,
+      "confidence": 4,
+      "hoursToImpact": 12,
+      "detectedAt": "2026-07-28T11:30:00Z",
+      "locations": {
+        "countries": [
+          "United States"
+        ],
+        "states": [
+          "Texas"
+        ],
+        "cities": [
+          "Austin"
+        ]
+      },
+      "sourceLinks": [
+        {
+          "label": "Ready.gov business continuity reference",
+          "url": "https://www.ready.gov/business",
+          "publishedAt": "2026-07-28"
+        }
+      ],
+      "signals": [
+        "final-mile delay",
+        "support volume spike",
+        "SLA exception risk"
+      ],
+      "actions": [
+        {
+          "title": "Add a one-day buffer to exposed Texas orders",
+          "owner": "Shopify operations",
+          "status": "new",
+          "rationale": "Align storefront delivery language with likely carrier performance."
+        }
+      ],
+      "watchNext": "Monitor carrier exceptions and ticket spikes from Texas addresses."
+    },
+    {
+      "id": "alert-us-canada-section-338",
+      "board": "social-policy",
+      "riskType": "tariff",
+      "title": "U.S.-Canada tariff escalation exposes Canada-origin product lines",
+      "summary": "New 50% tariffs on covered Canadian goods can hit Canada-origin SKUs even when teams expected North American routing to be low-friction.",
+      "severity": 5,
+      "confidence": 5,
+      "hoursToImpact": 24,
+      "detectedAt": "2026-08-24T09:00:00Z",
+      "locations": {
+        "countries": [
+          "Canada",
+          "United States"
+        ],
+        "states": [
+          "Ontario",
+          "California"
+        ],
+        "cities": []
+      },
+      "sourceLinks": [
+        {
+          "label": "White House Canada tariff fact sheet",
+          "url": "https://www.whitehouse.gov/fact-sheets/2026/07/fact-sheet-president-donald-j-trump-imposes-additional-tariffs-on-canada/",
+          "publishedAt": "2026-07-20"
+        },
+        {
+          "label": "AP U.S.-Canada tariff update",
+          "url": "https://apnews.com/article/293908564c7a381ea58a61db6e9a8517",
+          "publishedAt": "2026-08-23"
+        }
+      ],
+      "signals": [
+        "section 338 tariff",
+        "Canada-origin goods",
+        "USMCA uncertainty",
+        "affected category list"
+      ],
+      "actions": [
+        {
+          "title": "Build an affected goods table by HTS code, category, origin, and user segment",
+          "owner": "Trade compliance",
+          "status": "new",
+          "rationale": "The policy impact is quantifiable only after affected goods are joined to SKU and customer data."
+        },
+        {
+          "title": "Shortlist substitute origins before the next purchase order",
+          "owner": "Sourcing lead",
+          "status": "new",
+          "rationale": "Canada-origin lines need an alternative supply path if landed cost breaks margin or promotion economics."
+        },
+        {
+          "title": "Pause discounts on exposed thin-margin items until landed cost is recalculated",
+          "owner": "Channel ops",
+          "status": "new",
+          "rationale": "Promotions can turn tariff exposure into immediate margin leakage."
+        }
+      ],
+      "watchNext": "Watch the covered product list, retaliation timing, and whether suppliers can document origin or reroute replenishment."
+    },
+    {
+      "id": "alert-us-tariff",
+      "board": "social-policy",
+      "riskType": "tariff",
+      "title": "New U.S. tariff and low-value declaration changes squeeze China-origin SKUs",
+      "summary": "China-origin inventory faces renewed landed-cost pressure and more administrative burden for low-value shipments.",
+      "severity": 5,
+      "confidence": 5,
+      "hoursToImpact": 8,
+      "detectedAt": "2026-07-28T08:00:00Z",
+      "locations": {
+        "countries": [
+          "China",
+          "United States"
+        ],
+        "states": [
+          "California",
+          "New Jersey"
+        ],
+        "cities": []
+      },
+      "sourceLinks": [
+        {
+          "label": "Avalara tariff analysis",
+          "url": "https://www.avalara.com/blog/en/north-america/2026/01/tariffs-2026-how-new-trade-rules-impact-business.html",
+          "publishedAt": "2026-07-23"
+        },
+        {
+          "label": "Shopify import guide",
+          "url": "https://www.shopify.com/blog/international-import-shipping",
+          "publishedAt": "2026-02-24"
+        }
+      ],
+      "signals": [
+        "landed cost increase",
+        "margin compression",
+        "declaration workflow changes"
+      ],
+      "actions": [
+        {
+          "title": "Reprice thin-margin China-origin SKUs",
+          "owner": "Finance and channel ops",
+          "status": "new",
+          "rationale": "Protect margin before new inventory lands."
+        },
+        {
+          "title": "Audit HS code and origin metadata for upcoming U.S.-bound shipments",
+          "owner": "Trade compliance",
+          "status": "new",
+          "rationale": "Reduce avoidable customs friction."
+        }
+      ],
+      "watchNext": "Review declared values, origin tags, and upcoming replenishment purchase orders."
+    },
+    {
+      "id": "alert-marketplace-promise",
+      "board": "social-policy",
+      "riskType": "platform policy",
+      "title": "Marketplace promise pressure increases the cost of late updates",
+      "summary": "Late changes to delivery windows and response handling can quickly become visibility or seller-health risk.",
+      "severity": 4,
+      "confidence": 3,
+      "hoursToImpact": 24,
+      "detectedAt": "2026-07-28T07:45:00Z",
+      "locations": {
+        "countries": [
+          "United States"
+        ],
+        "states": [
+          "Washington",
+          "New York"
+        ],
+        "cities": [
+          "Seattle",
+          "New York"
+        ]
+      },
+      "sourceLinks": [
+        {
+          "label": "AfterShip operations reference",
+          "url": "https://www.aftership.com/updates",
+          "publishedAt": "2026-07-28"
+        }
+      ],
+      "signals": [
+        "promise mismatch",
+        "cancellation risk",
+        "seller health pressure"
+      ],
+      "actions": [
+        {
+          "title": "Review SLA rules for exposed channels before end of day",
+          "owner": "Marketplace manager",
+          "status": "new",
+          "rationale": "Align storefront promises with current operating reality."
+        },
+        {
+          "title": "Refresh customer-facing delay macros",
+          "owner": "Customer care",
+          "status": "new",
+          "rationale": "Keep exception handling consistent across channels."
+        }
+      ],
+      "watchNext": "Watch cancellation rates and late-shipment flags by channel."
+    },
+    {
+      "id": "alert-multistate-compliance",
+      "board": "social-policy",
+      "riskType": "labor compliance",
+      "title": "Multi-state workforce compliance load rises as rules diverge",
+      "summary": "Teams operating across states need tighter tracking of local labor expectations during disruption periods.",
+      "severity": 3,
+      "confidence": 3,
+      "hoursToImpact": 48,
+      "detectedAt": "2026-07-28T06:30:00Z",
+      "locations": {
+        "countries": [
+          "United States"
+        ],
+        "states": [
+          "California",
+          "New Jersey",
+          "Texas"
+        ],
+        "cities": []
+      },
+      "sourceLinks": [
+        {
+          "label": "ADP compliance trends",
+          "url": "https://www.adp.com/spark/articles/2025/12/key-hr-compliance-trends-for-2026-and-how-to-get-ahead.aspx",
+          "publishedAt": "2025-12-18"
+        },
+        {
+          "label": "ADP multi-state payroll guide",
+          "url": "https://www.adp.com/resources/articles-and-insights/articles/m/multi-state-payroll-processing.aspx",
+          "publishedAt": "2026-03-23"
+        }
+      ],
+      "signals": [
+        "workforce policy divergence",
+        "manual admin load",
+        "response-plan inconsistency"
+      ],
+      "actions": [
+        {
+          "title": "Tag workforce locations by local operating constraints",
+          "owner": "People operations",
+          "status": "new",
+          "rationale": "Make disruption playbooks state-aware instead of generic."
+        }
+      ],
+      "watchNext": "Compare workforce playbooks across California, New Jersey, and Texas."
+    }
+  ],
+  "auditTrail": [
+    {
+      "id": "6f5b4879-6dc9-4f57-a27e-d7315c678320",
+      "createdAt": "2026-07-29T20:58:23.175Z",
+      "type": "workspace-settings",
+      "actor": "local operator",
+      "summary": "Updated workspace settings."
+    }
+  ]
+}

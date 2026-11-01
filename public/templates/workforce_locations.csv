@@ -1,0 +1,3 @@
+id,team_name,country,state,city,employees,criticality,notes
+team-001,Ops East,United States,New Jersey,Jersey City,5,important,Handles East Coast issues
+team-002,Customer Care Texas,United States,Texas,Austin,6,monitor,Customer promise support team

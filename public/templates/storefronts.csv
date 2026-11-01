@@ -1,0 +1,4 @@
+id,name,platform,market,country,state,city,criticality,notes
+store-001,Amazon US,Amazon,United States,United States,Washington,Seattle,core,Primary marketplace
+store-002,Shopify US,Shopify,United States,United States,New York,New York,important,Direct-to-consumer storefront
+

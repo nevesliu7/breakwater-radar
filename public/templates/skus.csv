@@ -1,0 +1,4 @@
+id,name,origin_country,primary_market,channels,margin_band,criticality,hts_code,category,user_segments,alternate_origins,notes
+sku-001,Portable Fan Kit,China,United States,Amazon US|Shopify US,thin,core,8414.59,small appliance,heat-sensitive buyers|Amazon deal shoppers,Vietnam|Mexico,Summer volume SKU
+sku-002,Storage Bin,Vietnam,United States,Amazon US,healthy,monitor,3924.90,home storage,home organization buyers,Mexico|United States,Lower tariff exposure
+sku-003,Maple Home Storage Rack,Canada,United States,Shopify US|Amazon US,thin,important,9403.20,furniture/home storage,small apartment renters|home organization buyers,Mexico|United States|Vietnam,Canada-origin SKU for tariff exposure testing

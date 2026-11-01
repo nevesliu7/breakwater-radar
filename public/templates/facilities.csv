@@ -1,0 +1,4 @@
+id,name,type,country,state,city,timezone,criticality,notes
+fac-001,Los Angeles 3PL,3PL,United States,California,Los Angeles,America/Los_Angeles,core,Primary U.S. receiving warehouse
+fac-002,Shenzhen Hub,origin hub,China,Guangdong,Shenzhen,Asia/Shanghai,core,Primary export staging point
+
